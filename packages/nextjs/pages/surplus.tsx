@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
+import { usePositionRouterIsLeverageEnabled } from "~~/generated/external";
 
 const Surplus: NextPage = () => {
   const [isLong, setIsLong] = useState(true);
+  const { data } = usePositionRouterIsLeverageEnabled();
+  console.log(data);
 
   return (
     <>
