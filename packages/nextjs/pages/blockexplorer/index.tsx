@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import type { NextPage } from "next";
 import { hardhat } from "wagmi/chains";
+import { Footer } from "~~/components/Footer";
+import { Header } from "~~/components/Header";
 import { PaginationButton } from "~~/components/blockexplorer/PaginationButton";
 import { SearchBar } from "~~/components/blockexplorer/SearchBar";
 import { TransactionsTable } from "~~/components/blockexplorer/TransactionsTable";
@@ -49,11 +51,15 @@ const Blockexplorer: NextPage = () => {
   }, [error]);
 
   return (
-    <div className="container mx-auto my-10">
-      <SearchBar />
-      <TransactionsTable blocks={blocks} transactionReceipts={transactionReceipts} isLoading={isLoading} />
-      <PaginationButton currentPage={currentPage} totalItems={Number(totalBlocks)} setCurrentPage={setCurrentPage} />
-    </div>
+    <>
+      <Header />
+      <div className="container mx-auto my-10">
+        <SearchBar />
+        <TransactionsTable blocks={blocks} transactionReceipts={transactionReceipts} isLoading={isLoading} />
+        <PaginationButton currentPage={currentPage} totalItems={Number(totalBlocks)} setCurrentPage={setCurrentPage} />
+      </div>
+      <Footer />
+    </>
   );
 };
 

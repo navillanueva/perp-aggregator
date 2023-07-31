@@ -1,11 +1,14 @@
 import Link from "next/link";
 import type { NextPage } from "next";
 import { BugAntIcon, MagnifyingGlassIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import { Footer } from "~~/components/Footer";
+import { Header } from "~~/components/Header";
 import { MetaHeader } from "~~/components/MetaHeader";
 
 const Home: NextPage = () => {
   return (
     <>
+      <Header />
       <MetaHeader />
       <div className="flex items-center flex-col flex-grow pt-10">
         <div className="px-5">
@@ -58,6 +61,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

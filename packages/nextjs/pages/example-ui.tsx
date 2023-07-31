@@ -1,4 +1,6 @@
 import type { NextPage } from "next";
+import { Footer } from "~~/components/Footer";
+import { Header } from "~~/components/Header";
 import { MetaHeader } from "~~/components/MetaHeader";
 import { ContractData } from "~~/components/example-ui/ContractData";
 import { ContractInteraction } from "~~/components/example-ui/ContractInteraction";
@@ -6,6 +8,7 @@ import { ContractInteraction } from "~~/components/example-ui/ContractInteractio
 const ExampleUI: NextPage = () => {
   return (
     <>
+      <Header />
       <MetaHeader
         title="Example UI | Scaffold-ETH 2"
         description="Example UI created with 🏗 Scaffold-ETH 2, showcasing some of its features."
@@ -18,6 +21,7 @@ const ExampleUI: NextPage = () => {
         <ContractInteraction />
         <ContractData />
       </div>
+      <Footer />
     </>
   );
 };

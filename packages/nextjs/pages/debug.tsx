@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import type { NextPage } from "next";
 import { useLocalStorage } from "usehooks-ts";
+import { Footer } from "~~/components/Footer";
+import { Header } from "~~/components/Header";
 import { MetaHeader } from "~~/components/MetaHeader";
 import { ContractUI } from "~~/components/scaffold-eth";
 import { ContractName } from "~~/utils/scaffold-eth/contract";
@@ -23,6 +25,7 @@ const Debug: NextPage = () => {
 
   return (
     <>
+      <Header />
       <MetaHeader
         title="Debug Contracts | Scaffold-ETH 2"
         description="Debug your deployed 🏗 Scaffold-ETH 2 contracts in an easy way"
@@ -67,6 +70,7 @@ const Debug: NextPage = () => {
           </code>{" "}
         </p>
       </div>
+      <Footer />
     </>
   );
 };
