@@ -8,11 +8,15 @@ export default defineConfig(() => {
     envDir: process.cwd(),
   });
 
+  if (!env.ARBISCAN_API_KEY) {
+    throw new Error("Missing ARBISCAN_API_KEY");
+  }
+
   return {
     out: "./generated/external.ts",
     plugins: [
       etherscan({
-        apiKey: env.ARBISCAN_API_KEY!,
+        apiKey: env.ARBISCAN_API_KEY,
         chainId: arbitrum.id,
         contracts: [
           {
