@@ -9,7 +9,7 @@ export default defineConfig(() => {
   });
 
   if (!env.ARBISCAN_API_KEY) {
-    throw new Error("Missing ARBISCAN_API_KEY");
+    console.log("Missing ARBISCAN_API_KEY");
   }
 
   return {
