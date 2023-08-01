@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
-import { usePositionRouterIsLeverageEnabled } from "~~/generated/external";
+import { useGmxRouterApprovePlugin } from "~~/generated/external";
 
 const Surplus: NextPage = () => {
   const [isLong, setIsLong] = useState(true);
-  const { data } = usePositionRouterIsLeverageEnabled();
-  console.log(data);
+  const { writeAsync: approvePluginAsync } = useGmxRouterApprovePlugin({
+    args: ["0xb87a436B93fFE9D75c5cFA7bAcFff96430b09868"],
+  });
 
   return (
     <>
@@ -25,7 +26,9 @@ const Surplus: NextPage = () => {
                 Short
               </a>
             </div>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <button className="btn" onClick={() => approvePluginAsync()}>
+              Approve Plugin
+            </button>
             <div className="card-actions justify-end">
               <button className="btn">Buy Now</button>
             </div>
