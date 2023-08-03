@@ -31,10 +31,6 @@ export default defineConfig(() => {
             name: "OrderManager",
             address: "0x5b5d94B1574a8A910E6FC0a38949f5B256f22FF9",
           },
-          {
-            name: "TransparentUpgradeableProxy",
-            address: "0x2215298606C9D0274527b13519Ec50c3A7f1c1eF",
-          },
         ],
       }),
       react(),
