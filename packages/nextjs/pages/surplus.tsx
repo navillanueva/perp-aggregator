@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { orderManagerABI, useGmxRouterApprovePlugin } from "../generated/external";
 import { placeOrder } from "../utils/vertexApi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { ethers } from "ethers";
 import type { NextPage } from "next";
 import { parseEther } from "viem";
 import { useContractRead, useContractWrite } from "wagmi";
-import { orderManagerABI, useGmxRouterApprovePlugin } from "~~/generated/external";
+import { useWalletClient } from "wagmi";
 
 const Surplus: NextPage = () => {
   // wagmi/gmx shit
@@ -48,14 +50,23 @@ const Surplus: NextPage = () => {
 
   const handlePlaceVertexOrder = async () => {
     try {
+      const { data: walletClient } = useWalletClient();
+      if (!walletClient) {
+        throw new Error("No wallet client available");
+      }
+
+      const provider = new ethers.providers.Web3Provider(walletClient as any);
+      const signer = provider.getSigner();
       const orderData = {
         product_id: product,
         price,
-        size,
-        order_type: orderType,
+        amount: size,
+        is_bid: orderType === "LIMIT",
+        expiration: Math.floor(Date.now() / 1000) + 300, // Example expiration
+        nonce: Date.now(), // use wallet's nonce
       };
 
-      const response = await placeOrder(orderData);
+      const response = await placeOrder(signer, orderData);
       setVertexOrderResponse(response);
       console.log("Order placed successfully:", response);
     } catch (err: any) {
