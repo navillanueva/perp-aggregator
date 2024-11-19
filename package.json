@@ -40,6 +40,15 @@
     "usehooks-ts@^2.7.2": "patch:usehooks-ts@npm:^2.7.2#./.yarn/patches/usehooks-ts-npm-2.7.2-fceffe0e43.patch"
   },
   "dependencies": {
+    "@vertex-protocol/client": "^0.58.0",
+    "@vertex-protocol/contracts": "^0.58.0",
+    "@vertex-protocol/engine-client": "^0.58.0",
+    "@vertex-protocol/indexer-client": "^0.58.0",
+    "@vertex-protocol/trigger-client": "^0.58.0",
+    "@vertex-protocol/utils": "^0.58.0",
+    "bignumber.js": "^9.1.2",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.4",
     "node-gyp": "^9.4.0"
   }
 }
